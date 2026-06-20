@@ -1,164 +1,168 @@
-╔══════════════════════════════════════╗
-║          NORTON RANCH                ║
-║       FARM MANAGEMENT DASHBOARD      ║
-╚══════════════════════════════════════╝
+<!DOCTYPE html>
+<html>
+<head>
+<title>Norton Ranch Dashboard</title>
+<style>
+body {
+  font-family: Arial;
+  background: #e8f5e9;
+  text-align: center;
+}
+
+.dashboard {
+  width: 800px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px #aaa;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<h1>🌿 Norton Ranch 🌿</h1>
+<h2>Farm Management Dashboard</h2>
 
 
-🏠 RANCH OVERVIEW
---------------------------------------
-Owner: Norton Ranch
-Ranch Status: Active
-Location: Main Ranch
-Season: Spring
-Weather: Sunny ☀️
-Ranch Rating: ★★★★☆
+<div class="card">
+<h2>🏡 Ranch Status</h2>
 
-📊 QUICK STATS
---------------------------------------
-🌾 Total Acres: 500
-🌱 Active Fields: 18
-🐄 Livestock Total: 121
-🚜 Equipment: 24
-👷 Workers: 12
-💧 Water Supply: 85%
-⚡ Power Status: Good
+<p>Weather: ☀️ Sunny</p>
+<p>Season: 🌱 Spring</p>
+<p>Ranch Health: <span id="health">Excellent</span></p>
+
+</div>
 
 
-🌾 CROP MANAGEMENT
---------------------------------------
-Corn:
-  Fields: 8
-  Growth: 75%
-  Ready: 3 fields
+<div class="card">
 
-Wheat:
-  Fields: 5
-  Growth: 60%
+<h2>🐄 Livestock</h2>
 
-Hay:
-  Bales Stored: 250
+<p>Cows: <span id="cows">75</span></p>
+<p>Chickens: <span id="chickens">80</span></p>
+<p>Horses: <span id="horses">6</span></p>
 
-Vegetables:
-  Greenhouse Production: Active
+<button onclick="feedAnimals()">Feed Animals 🐄</button>
 
-Crop Health:
-  Soil Quality: Excellent
-  Fertilizer Level: Good
-  Pest Control: Active
+</div>
 
 
-🐄 LIVESTOCK MANAGEMENT
---------------------------------------
-Cattle:
-  Herd Size: 75
-  Health: 98%
-  Feed Supply: 30 days
+<div class="card">
 
-Chickens:
-  Count: 80
-  Egg Production: 95%
+<h2>🌾 Crops</h2>
 
-Horses:
-  Count: 6
-  Training Status: Active
+<p>Crop Growth: <span id="crops">60</span>%</p>
 
-Animal Care:
-  ✔ Feeding
-  ✔ Veterinary Checks
-  ✔ Shelter Maintenance
+<button onclick="waterCrops()">Water Crops 💧</button>
+
+</div>
 
 
-🚜 EQUIPMENT GARAGE
---------------------------------------
-Tractors:
-  - John Deere Tractor
-  - Utility Tractor
+<div class="card">
 
-Machines:
-  - Harvesters
-  - Seeders
-  - Plows
-  - Trailers
+<h2>💰 Finances</h2>
 
-Maintenance:
-  Next Service: 14 days
+<p>Money: $<span id="money">45000</span></p>
+
+<button onclick="sellProducts()">Sell Products 🧺</button>
+
+</div>
 
 
-💰 FINANCIAL CENTER
---------------------------------------
-Income:
-  Crop Sales: $15,000
-  Animal Products: $8,500
+<div class="card">
 
-Expenses:
-  Feed: $2,300
-  Fuel: $1,200
-  Repairs: $900
+<h2>📋 Ranch Tasks</h2>
 
-Current Balance:
-  $45,000
+<p id="task">
+No tasks completed yet
+</p>
 
-Monthly Profit:
-  $19,100
+<button onclick="completeTask()">Complete Task ✅</button>
+
+</div>
 
 
-📦 INVENTORY
---------------------------------------
-Feed:
-  Hay: 250 bales
-  Grain: 500 bags
-
-Storage:
-  Barn Capacity: 80%
-
-Products:
-  Milk
-  Eggs
-  Crops
-  Meat
+</div>
 
 
-📋 DAILY TASKS
---------------------------------------
-☐ Feed livestock
-☐ Check water systems
-☐ Inspect fences
-☐ Monitor crops
-☐ Maintain equipment
-☐ Update records
+<script>
+
+let money = 45000;
+let crops = 60;
+let cows = 75;
 
 
-📈 REPORTS
---------------------------------------
-Weekly Production:
-  Crops ↑ 12%
-  Milk ↑ 8%
-  Eggs ↑ 15%
+function feedAnimals(){
 
-Animal Health Report:
-  Excellent
+cows++;
 
-Farm Efficiency:
-  92%
+document.getElementById("cows").innerHTML=cows;
 
+document.getElementById("health").innerHTML="Excellent ⭐";
 
-🗺 PROPERTY MAP
---------------------------------------
-🏡 Main House
-🐄 Cattle Barn
-🐎 Horse Stable
-🌾 Crop Fields
-🚜 Equipment Shed
-🌱 Greenhouses
-💧 Water Reservoir
+document.getElementById("task").innerHTML=
+"Animals fed successfully 🐄";
+
+}
 
 
-🔔 ALERTS
---------------------------------------
-✔ No emergencies
-✔ Supplies stocked
-✔ Equipment operational
+function waterCrops(){
+
+crops += 5;
+
+if(crops > 100){
+crops = 100;
+}
+
+document.getElementById("crops").innerHTML=crops;
+
+document.getElementById("task").innerHTML=
+"Crops watered 🌱";
+
+}
 
 
-NORTON RANCH
-"Growing Strong. Working Together."
+function sellProducts(){
+
+money += 2500;
+
+document.getElementById("money").innerHTML=money;
+
+document.getElementById("task").innerHTML=
+"Products sold 🧺";
+
+}
+
+
+function completeTask(){
+
+document.getElementById("task").innerHTML=
+"Daily ranch work completed 🎉";
+
+}
+
+
+</script>
+
+</body>
+</html>
